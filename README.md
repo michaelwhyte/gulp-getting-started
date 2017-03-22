@@ -1,2 +1,2 @@
-# gulp-getting-started
-Gulp getting started
+# Gulp - Getting Started
+Getting started with Gulp.
