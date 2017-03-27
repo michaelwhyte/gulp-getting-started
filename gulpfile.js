@@ -2,6 +2,11 @@ const gulp = require('gulp');
 const sass = require('gulp-sass');
 const sourcemaps = require('gulp-sourcemaps');
 const browserSync = require('browser-sync').create();
+const useref = require('gulp-useref');
+const uglify = require('gulp-uglify');
+const gulpIf = require('gulp-if');
+const cssNano = require('gulp-cssnano');
+const htmlMin = require('gulp-htmlmin');
 
 // Intro Hello task...
 gulp.task('hello', function() {
@@ -35,3 +40,17 @@ gulp.task('browserSync', function(){
 		}
 	})
 });
+
+// Useref Task
+gulp.task('useref', function(){
+	return gulp.src('dev/*.html')
+		.pipe(useref())
+		.pipe(gulpIf('*.js', uglify()))
+		.pipe(gulpIf('*.css', cssNano()))
+		.pipe(gulpIf('*.html', htmlMin({collapseWhitespace: true})))
+		.pipe(gulp.dest('dist'))
+});
+
+
+
+

@@ -3,7 +3,9 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Gulp - Getting Started</title>
+	<!-- build:css styles/styles.min.css -->
 	<link rel="stylesheet" href="styles/styles.css">
+	<!-- endbuild -->
 </head>
 <body>
 <div class="wrapper">
@@ -31,6 +33,20 @@
 			</div>
 			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Impedit quasi odit ipsum doloremque et culpa, magnam sit ducimus ut officiis suscipit sequi similique praesentium beatae at quidem iure dolore voluptate! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rerum aut recusandae molestiae temporibus reiciendis facilis excepturi quasi adipisci porro odit sapiente suscipit eligendi veniam dolore corporis enim architecto, autem dicta.</p>
 
+			<h2>Code Snippet</h2>
+
+			<pre><code class="language-css">
+header {
+	background-color: $bannerColour;
+	color: white;
+	padding-top: 20px;
+}
+
+header h1 {
+	margin: 0 0 0 30px;
+}
+			</code></pre>
+
 			<p>Rerum et molestiae dolorem inventore eius quod itaque voluptatum reiciendis cumque accusamus! Nostrum blanditiis dolor quaerat expedita voluptate impedit, aliquam magnam excepturi! Consequuntur unde eos sed voluptatibus veritatis autem, blanditiis? Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maxime, vitae! Maiores iusto odio labore accusamus est eius soluta, illo corporis vero aut rem quas sit officia atque. Officiis, quae nostrum!</p>
 			
 			<p>Dolorem quidem, hic quibusdam, enim iusto voluptates veniam possimus quae iure. Adipisci voluptatem sunt inventore qui in suscipit, facere magni nostrum dolores nulla. Nobis soluta laboriosam ducimus vero exercitationem sed? Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ex ipsam quo distinctio deserunt, ipsa saepe facere, architecto ut excepturi ullam molestias, unde dolorem similique? Recusandae labore nobis nisi est aspernatur!</p>
@@ -40,7 +56,11 @@
 		<p>&copy; 2017 Michael Whyte</p>
 	</footer>
 </div><!-- end wrapper -->
+<!-- build:js scripts/script.min.js -->
+<script src="scripts/prism.js"></script>
 <script src="scripts/jquery-3.2.0.min.js"></script>
-<script src="scripts/jquery.cycle2.min.js"></script>	
+<script src="scripts/jquery.cycle2.min.js"></script>
+<script src="scripts/script.js"></script>
+<!-- endbuild -->	
 </body>
 </html>
