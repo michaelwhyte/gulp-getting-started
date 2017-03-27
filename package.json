@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/michaelwhyte/gulp-getting-started#readme",
   "devDependencies": {
+    "browser-sync": "^2.18.8",
     "gulp": "^3.9.1",
     "gulp-sass": "^3.1.0",
     "gulp-sourcemaps": "^2.4.1"
