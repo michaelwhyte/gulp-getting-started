@@ -1,0 +1,19 @@
+main {
+	padding: 30px;
+
+	article {
+		h1:first-child {
+			margin-top: 0;
+		}
+	}
+
+	.logo-gulp {
+		max-width: 80px;
+		height: auto;
+		float: left;
+		margin-right: 24px;
+		margin-bottom: 5px;
+    	padding-top: 5px;
+	}
+
+}
