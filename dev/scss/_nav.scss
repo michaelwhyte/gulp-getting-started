@@ -2,12 +2,18 @@ nav {
 
 	margin-top: 20px;
 	border-bottom: 2px solid $bannerColour;
+	width: 100%;
 
 	ul {
 		margin: 0;
 		padding: 0;
 		list-style-type: none;
 		display: flex;
+
+		@media (max-width: $phoneLarge){
+			flex-direction: column;
+		}
+
 	}
 
 	li {
@@ -29,10 +35,27 @@ nav {
 			background-color: #eee;
 		}
 
+		@media (max-width: $phoneLarge) {
+			border-right: none;
+			border-bottom: 2px solid $bannerColour;
+		}
+
 	}
 
 	li:last-child a {
 			border-right: none;
+	}
+
+	@media (max-width: $phoneLarge) {
+		border-bottom: none;
+		height: 0;
+		overflow: hidden;
+		transition: height 0.3s ease;
+
+		.show-mobile-menu & {
+			height: 220px;
+		}
+
 	}
 
 }
