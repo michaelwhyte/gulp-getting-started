@@ -7,6 +7,8 @@ const uglify = require('gulp-uglify');
 const gulpIf = require('gulp-if');
 const cssNano = require('gulp-cssnano');
 const htmlMin = require('gulp-htmlmin');
+const imageMin = require('gulp-imagemin');
+const cache = require('gulp-cache');
 
 // Intro Hello task...
 gulp.task('hello', function() {
@@ -49,6 +51,15 @@ gulp.task('useref', function(){
 		.pipe(gulpIf('*.css', cssNano()))
 		.pipe(gulpIf('*.html', htmlMin({collapseWhitespace: true})))
 		.pipe(gulp.dest('dist'))
+});
+
+// Image Optimization Task
+gulp.task('images', function(){
+	return gulp.src('dev/images/**/*.+(png|jpg|gif|svg)')
+		.pipe(cache(imageMin({
+			interlaced: true
+		})))
+		.pipe(gulp.dest('dist/images'));
 });
 
 
