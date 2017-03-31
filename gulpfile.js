@@ -50,7 +50,7 @@ gulp.task('useref', function(){
 		.pipe(gulpIf('*.js', uglify()))
 		.pipe(gulpIf('*.css', cssNano()))
 		.pipe(gulpIf('*.html', htmlMin({collapseWhitespace: true})))
-		.pipe(gulp.dest('dist'))
+		.pipe(gulp.dest('dist'));
 });
 
 // Image Optimization Task
@@ -61,6 +61,18 @@ gulp.task('images', function(){
 		})))
 		.pipe(gulp.dest('dist/images'));
 });
+
+// Move Fonts Task
+gulp.task('fonts', function(){
+	return gulp.src('dev/fonts/**/*')
+		.pipe(gulp.dest('dist/fonts'));
+});
+
+
+
+
+
+
 
 
 
