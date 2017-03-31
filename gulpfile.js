@@ -54,6 +54,8 @@ gulp.task('useref', function(){
 		.pipe(gulp.dest('dist'));
 });
 
+
+
 // Image Optimization Task
 gulp.task('images', function(){
 	return gulp.src('dev/images/**/*.+(png|jpg|gif|svg)')
