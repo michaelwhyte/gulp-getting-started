@@ -10,6 +10,7 @@ const htmlMin = require('gulp-htmlmin');
 const imageMin = require('gulp-imagemin');
 const cache = require('gulp-cache');
 const del = require('del');
+const runSequence = require('run-sequence');
 
 // Intro Hello task...
 gulp.task('hello', function() {
@@ -29,7 +30,7 @@ gulp.task('sass', function(){
 });
 
 // Watch task
-gulp.task('watch', ['browserSync', 'sass'], function(){
+gulp.task('watch', function(){
 	gulp.watch('dev/scss/**/*.scss', ['sass']);
 	gulp.watch('dev/*.html', browserSync.reload);
 	gulp.watch('dev/scripts/**/*.js', browserSync.reload);
@@ -74,6 +75,16 @@ gulp.task('fonts', function(){
 // Clean Dist Folder Task
 gulp.task('clean:dist', function(){
 	return del.sync('dist');
+});
+
+// Default Task
+gulp.task('default', function() {
+  runSequence(['sass', 'browserSync'], 'watch');
+})
+
+// Build Task
+gulp.task('build', function(){
+	runSequence('clean:dist', 'sass', ['useref', 'images', 'fonts']);
 });
 
 
