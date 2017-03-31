@@ -9,6 +9,7 @@ const cssNano = require('gulp-cssnano');
 const htmlMin = require('gulp-htmlmin');
 const imageMin = require('gulp-imagemin');
 const cache = require('gulp-cache');
+const del = require('del');
 
 // Intro Hello task...
 gulp.task('hello', function() {
@@ -66,6 +67,11 @@ gulp.task('images', function(){
 gulp.task('fonts', function(){
 	return gulp.src('dev/fonts/**/*')
 		.pipe(gulp.dest('dist/fonts'));
+});
+
+// Clean Dist Folder Task
+gulp.task('clean:dist', function(){
+	return del.sync('dist');
 });
 
 
