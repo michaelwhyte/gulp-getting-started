@@ -12,12 +12,12 @@ const cache = require('gulp-cache');
 const del = require('del');
 const runSequence = require('run-sequence');
 
-// Intro Hello task...
+// Intro Hello Task...
 gulp.task('hello', function() {
   console.log('Hello, Michael');
 });
 
-// Sass task
+// SASS Task
 gulp.task('sass', function(){
 	return gulp.src('dev/scss/**/*.scss')
 		.pipe(sourcemaps.init())
@@ -29,7 +29,7 @@ gulp.task('sass', function(){
 		}));
 });
 
-// Watch task
+// Watch Task
 gulp.task('watch', function(){
 	gulp.watch('dev/scss/**/*.scss', ['sass']);
 	gulp.watch('dev/*.html', browserSync.reload);
@@ -42,7 +42,7 @@ gulp.task('browserSync', function(){
 		server: {
 			baseDir: 'dev'
 		}
-	})
+	});
 });
 
 // Useref Task
@@ -55,8 +55,6 @@ gulp.task('useref', function(){
 		.pipe(gulp.dest('dist'));
 });
 
-
-
 // Image Optimization Task
 gulp.task('images', function(){
 	return gulp.src('dev/images/**/*.+(png|jpg|gif|svg)')
@@ -66,7 +64,7 @@ gulp.task('images', function(){
 		.pipe(gulp.dest('dist/images'));
 });
 
-// Move Fonts Task
+// Fonts Task
 gulp.task('fonts', function(){
 	return gulp.src('dev/fonts/**/*')
 		.pipe(gulp.dest('dist/fonts'));
@@ -80,7 +78,7 @@ gulp.task('clean:dist', function(){
 // Default Task
 gulp.task('default', function() {
   runSequence(['sass', 'browserSync'], 'watch');
-})
+});
 
 // Build Task
 gulp.task('build', function(){
