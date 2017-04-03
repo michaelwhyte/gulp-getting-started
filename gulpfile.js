@@ -11,6 +11,9 @@ const imageMin = require('gulp-imagemin');
 const cache = require('gulp-cache');
 const del = require('del');
 const runSequence = require('run-sequence');
+const rev = require('gulp-rev');
+const revReplace = require('gulp-rev-replace');
+const filter = require('gulp-filter');
 
 // Intro Hello Task...
 gulp.task('hello', function() {
@@ -47,11 +50,18 @@ gulp.task('browserSync', function(){
 
 // Useref Task
 gulp.task('useref', function(){
+
+	const f = filter(['**/*.css', '**/*.js'], {restore: true});
+
 	return gulp.src('dev/*.html')
 		.pipe(useref())
 		.pipe(gulpIf('*.js', uglify()))
 		.pipe(gulpIf('*.css', cssNano()))
 		.pipe(gulpIf('*.html', htmlMin({collapseWhitespace: true})))
+		.pipe(f)
+		.pipe(rev())
+		.pipe(f.restore)
+		.pipe(revReplace())
 		.pipe(gulp.dest('dist'));
 });
 
@@ -84,6 +94,13 @@ gulp.task('default', function() {
 gulp.task('build', function(){
 	runSequence('clean:dist', 'sass', ['useref', 'images', 'fonts']);
 });
+
+// Revision task
+// gulp.task('revision', function(){
+// 	return gulp.src(['dist/**/*.css', 'dist/**/*.js'])
+// 		.pipe(rev())
+// 		.pipe(gulp.dest('dist'))
+// });
 
 
 
