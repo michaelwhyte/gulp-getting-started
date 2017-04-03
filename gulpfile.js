@@ -95,12 +95,6 @@ gulp.task('build', function(){
 	runSequence('clean:dist', 'sass', ['useref', 'images', 'fonts']);
 });
 
-// Revision task
-// gulp.task('revision', function(){
-// 	return gulp.src(['dist/**/*.css', 'dist/**/*.js'])
-// 		.pipe(rev())
-// 		.pipe(gulp.dest('dist'))
-// });
 
 
 
