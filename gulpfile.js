@@ -4,6 +4,8 @@ const sourcemaps = require('gulp-sourcemaps');
 const browserSync = require('browser-sync').create();
 const useref = require('gulp-useref');
 const uglify = require('gulp-uglify');
+const composer = require('gulp-uglify/composer');
+const uglifyES = require('uglify-es');
 const gulpIf = require('gulp-if');
 const cssNano = require('gulp-cssnano');
 const htmlMin = require('gulp-htmlmin');
@@ -14,6 +16,8 @@ const runSequence = require('run-sequence');
 const rev = require('gulp-rev');
 const revReplace = require('gulp-rev-replace');
 const filter = require('gulp-filter');
+
+const minify = composer(uglifyES);
 
 // Intro Hello Task...
 gulp.task('hello', function() {
@@ -55,7 +59,7 @@ gulp.task('useref', function(){
 
 	return gulp.src('dev/*.html')
 		.pipe(useref())
-		.pipe(gulpIf('*.js', uglify()))
+		.pipe(gulpIf('*.js', minify()))
 		.pipe(gulpIf('*.css', cssNano()))
 		.pipe(gulpIf('*.html', htmlMin({collapseWhitespace: true})))
 		.pipe(f)
